@@ -14,26 +14,27 @@ Java개발자 과정 Database 리포지토리
     - SQL 배우기!
 - Docker에서 Oracle 설치
     1. powershell 열기
-    2. pull 내려받기
+    2. docker search로 다운로드 하고 싶은 이미지 :있는지 없는지 확인
+    3. pull 내려받기
     > docker pull oracleinanutshell/oracle-xe-11g
     ```
-    3. 다운로드 이미지 확인
+    4. 다운로드 이미지 확인
     > PS C:\Users\Admin> docker image ls
     REPOSITORY              TAG       IMAGE ID       CREATED        SIZE
     ```
-    4. 도커 컨테이너 실행
+    5. 도커 컨테이너 실행
     > docker run --name oracle11g -d -p 1521:1521 --restart=always oracleinanutshell/oracle-xe-11g
                                                     컴퓨터를 키고 도커를 따로 실행하지 않아도 자동 실행시켜주는 명령어
     ```
     - 1522 - 오라클 기본포트
     - 아이디 : system / oracle
-    5. 도커 실행확인
+    6. 도커 실행확인
     - Docker Desktop > Containers 확인
-    6. powershell 열기
+    7. powershell 열기
     > docker exec -it oracle11g bash
     
     <img src="./image/dv0001.png" width="650">
-    7. DBeaver 접속
+    8. DBeaver 접속
         - Connection > Select your DB > Oracle
 - DBeaver 툴 설치
     - https://dbeaver.io/download/
@@ -68,6 +69,8 @@ Java개발자 과정 Database 리포지토리
       3. NULL(!)
       4. ORDER BY 정렬
       5. 집합
-
+- 함수(내장함수)
+  - 문자함수 : [SQL](./day01/sql01_select기본.sql)
+  - 숫자함수
 
 ## 2일차
