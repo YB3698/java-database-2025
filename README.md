@@ -62,12 +62,12 @@ Java개발자 과정 Database 리포지토리
             [ORDER BY 정렬속성(들)]
             [WITH ROLLUP]
 
-       - 기본 쿼리 학습 : SQL
-           a. 기본 SELECT
-           b. WHARE 조건절
-           c. NULL(!)
-           d. ORDER BY 정렬
-           e. 집합
+- 기본 쿼리 학습 : SQL
+   a. 기본 SELECT
+   b. WHARE 조건절
+   c. NULL(!)
+   d. ORDER BY 정렬
+   e. 집합
 
 
-## 2일차차
+## 2일차
