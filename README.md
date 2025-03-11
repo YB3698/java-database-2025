@@ -62,12 +62,12 @@ Java개발자 과정 Database 리포지토리
             [ORDER BY 정렬속성(들)]
             [WITH ROLLUP]
 
-- 기본 쿼리 학습 : [SQL](./day01/sql01_select기본.sql)
-   1. 기본 SELECT
-   2. WHARE 조건절
-   3. NULL(!)
-   4. ORDER BY 정렬
-   5. 집합
+    - 기본 쿼리 학습 : [SQL](./day01/sql01_select기본.sql)
+      1. 기본 SELECT
+      2. WHARE 조건절
+      3. NULL(!)
+      4. ORDER BY 정렬
+      5. 집합
 
 
 ## 2일차
