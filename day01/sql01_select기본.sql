@@ -79,10 +79,17 @@ SELECT *
 FROM employees
 WHERE salary >= 9000 AND salary <= 15000
 
--- NULL 비교
 SELECT * 
 FROM employees
 WHERE first_name IN ('John', 'steven', 'Neena');
+
+SELECT *
+  FROM employees
+  WHERE first_name = 'John' 
+  OR first_name = 'Steven'
+  OR first_name = 'Neena';
+
+-- NULL 비교
 
 SELECT *
   FROM employees
@@ -146,7 +153,7 @@ SELECT *
  ORDER BY job_id ASC, salary DESC; -- 여러개의 컬럼으로 정렬하는 방법
  
 /*
- * 집합, UNION, UNION ALL, IMTERSECT, MINUS
+ * 집합, UNION, UNION ALL, (IMTERSECT, MINUS : 얘넨 있지만 SQL에서 별로 안씀)
  */
 -- SELECT * FROM DEPARTMENTS d
 -- departments에서 department_id가 50 이하인 부서아이디와 부서명 데이터
