@@ -19,6 +19,7 @@ Java개발자 과정 Database 리포지토리
     > docker pull oracleinanutshell/oracle-xe-11g
     ```
     4. 다운로드 이미지 확인
+    ```
     > PS C:\Users\Admin> docker image ls
     REPOSITORY              TAG       IMAGE ID       CREATED        SIZE
     ```
@@ -31,9 +32,9 @@ Java개발자 과정 Database 리포지토리
     6. 도커 실행확인
     - Docker Desktop > Containers 확인
     7. powershell 열기
-    > docker exec -it oracle11g bash
-    
-    <img src="./image/dv0001.png" width="650">
+    > docker exec -it oracle11g bash  
+    <img src="./image/db0001.png" width=650>
+
     8. DBeaver 접속
         - Connection > Select your DB > Oracle
 - DBeaver 툴 설치
@@ -60,7 +61,7 @@ Java개발자 과정 Database 리포지토리
             [WHERE 검색조건(들)]
             [GROUP BY 속성명(들)]
             [HAVING 집계함수조건(들)]
-            [ORDER BY 정렬속성(들)]
+            [ORDER BY 정렬속성(들) ASC|DESC]
             [WITH ROLLUP]
 
     - 기본 쿼리 학습 : [SQL](./day01/sql01_select기본.sql)
@@ -74,3 +75,37 @@ Java개발자 과정 Database 리포지토리
   - 숫자함수
 
 ## 2일차
+- 함수(계속)
+    - 문자함수 부터 : [SQL](./day02/sql01_함수계속.sql)
+    - 숫자함수
+    - 날짜함수
+    - 형변환함수
+- 복수행 함수 :
+    - 집계함수
+    - GROUP BY
+    - HAVING
+    - ROLLUP
+    - RANK, DENSE_RNAK, ROW_NUMBER
+
+- 데이터베이스 타입형
+    - ⭐ CHAR(n) - 고정형 문자열, 최대 2000자
+        - CHAR(20)으로 'Hello World'를 저장하면, 'Hello World               '로 저장(공백포함)
+        - 기준코드나 반드시 자리수를 지켜야하는 데이터 필요
+    - ⭐ VARCHAR2(n) - 가변형 문자열, 최대 4000바이트
+        - VARCHAR2(20)로 'Hello World'를 저장하면, 'Hello World'로 저장
+    - INTEGER - 모든 데이터의 기준, 4byte, 정수를 담는 데이터형
+    - FLOAT(p) - 실수형 타입, 최대 22byte
+    - NUMBER(p,s) - 숫자값, p 전체자리수, s 소수점길이. 최대 22byte
+    - DATE - 날짜타입
+    - LONG(n) - 가변길이문자열, 최대 2G바이트
+    - LONG RAW(n) - 원시이진 데이터, 최대 2G바이트
+    - CLOB - 대용량 텍스트 데이터타입, 최대 4G
+    - BLOB - 대용량 바이너리 데이터타입, 최대 4G
+    - BFILE - 외부
+
+## 3일차
+- JOIN
+    - 카티션곱
+    - 내부조인, 외부조인
+- DDL
+    - CREATE, ALTER, DROP
