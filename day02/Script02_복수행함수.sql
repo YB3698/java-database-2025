@@ -100,17 +100,17 @@ SELECT CASE to_char(hire_date, 'MM') WHEN '01' THEN count(*) ELSE 0 END AS "1월
 
 -- decode
 SELECT decode(to_char(hire_date, 'MM'), '01', count(*), 0) AS "1월"
-	 , decode(to_char(hire_date, 'MM'), '01', count(*), 0) AS "2월"
-	 , decode(to_char(hire_date, 'MM'), '01', count(*), 0) AS "3월"
-	 , decode(to_char(hire_date, 'MM'), '01', count(*), 0) AS "4월"
-	 , decode(to_char(hire_date, 'MM'), '01', count(*), 0) AS "5월"
-	 , decode(to_char(hire_date, 'MM'), '01', count(*), 0) AS "6월"
-	 , decode(to_char(hire_date, 'MM'), '01', count(*), 0) AS "7월"
-	 , decode(to_char(hire_date, 'MM'), '01', count(*), 0) AS "8월"
-	 , decode(to_char(hire_date, 'MM'), '01', count(*), 0) AS "9월"
-	 , decode(to_char(hire_date, 'MM'), '01', count(*), 0) AS "10월"
-	 , decode(to_char(hire_date, 'MM'), '01', count(*), 0) AS "11월"
-	 , decode(to_char(hire_date, 'MM'), '01', count(*), 0) AS "12월"
+	 , decode(to_char(hire_date, 'MM'), '02', count(*), 0) AS "2월"
+	 , decode(to_char(hire_date, 'MM'), '03', count(*), 0) AS "3월"
+	 , decode(to_char(hire_date, 'MM'), '04', count(*), 0) AS "4월"
+	 , decode(to_char(hire_date, 'MM'), '05', count(*), 0) AS "5월"
+	 , decode(to_char(hire_date, 'MM'), '06', count(*), 0) AS "6월"
+	 , decode(to_char(hire_date, 'MM'), '07', count(*), 0) AS "7월"
+	 , decode(to_char(hire_date, 'MM'), '08', count(*), 0) AS "8월"
+	 , decode(to_char(hire_date, 'MM'), '09', count(*), 0) AS "9월"
+	 , decode(to_char(hire_date, 'MM'), '10', count(*), 0) AS "10월"
+	 , decode(to_char(hire_date, 'MM'), '11', count(*), 0) AS "11월"
+	 , decode(to_char(hire_date, 'MM'), '12', count(*), 0) AS "12월"
   FROM employees
  GROUP BY to_char(hire_date, 'MM')
  ORDER BY to_char(hire_date, 'MM');
@@ -122,6 +122,43 @@ SELECT employee_id, last_name, salary
 	 , dense_rank() OVER (ORDER BY salary desc) AS "덴스랭크" -- 일반적으로 많이 사용
 	 , row_number() OVER (ORDER BY salary desc) AS "행번호"
   FROM employees;
+
+SELECT *
+FROM (
+  SELECT TO_CHAR(hire_date, 'MM') AS hire_month, employee_id
+  FROM employees
+)
+PIVOT (
+  COUNT(employee_id)
+  FOR hire_month IN (
+    '01' AS "1월", 
+    '02' AS "2월", 
+    '03' AS "3월", 
+    '04' AS "4월", 
+    '05' AS "5월", 
+    '06' AS "6월", 
+    '07' AS "7월", 
+    '08' AS "8월", 
+    '09' AS "9월", 
+    '10' AS "10월", 
+    '11' AS "11월", 
+    '12' AS "12월"
+  )
+);
+SELECT *
+  FROM employees;
+
+
+
+SELECT employee_id,
+       CASE department_id
+           WHEN 10 THEN 'Accounting'
+           WHEN 20 THEN 'HR'
+           ELSE 'Other'
+       END AS department_name
+FROM employees;
+
+
   
 
 	 
