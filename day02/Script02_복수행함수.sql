@@ -118,45 +118,11 @@ SELECT decode(to_char(hire_date, 'MM'), '01', count(*), 0) AS "1월"
 -- RANK() 등수 공동등수 번호 띄우기, DENSE_RNAL() 등수번호가 순차적으로 올라감
 -- ROW_NUMBER() 현재 데이터 행번호 출력
 SELECT employee_id, last_name, salary
-	 , rank() OVER (ORDER BY salary desc) AS "랭크"
+	 , rank() OVER (ORDER BY salary desc) AS "랭크"          -- 잘 안씀
 	 , dense_rank() OVER (ORDER BY salary desc) AS "덴스랭크" -- 일반적으로 많이 사용
 	 , row_number() OVER (ORDER BY salary desc) AS "행번호"
   FROM employees;
 
-SELECT *
-FROM (
-  SELECT TO_CHAR(hire_date, 'MM') AS hire_month, employee_id
-  FROM employees
-)
-PIVOT (
-  COUNT(employee_id)
-  FOR hire_month IN (
-    '01' AS "1월", 
-    '02' AS "2월", 
-    '03' AS "3월", 
-    '04' AS "4월", 
-    '05' AS "5월", 
-    '06' AS "6월", 
-    '07' AS "7월", 
-    '08' AS "8월", 
-    '09' AS "9월", 
-    '10' AS "10월", 
-    '11' AS "11월", 
-    '12' AS "12월"
-  )
-);
-SELECT *
-  FROM employees;
-
-
-
-SELECT employee_id,
-       CASE department_id
-           WHEN 10 THEN 'Accounting'
-           WHEN 20 THEN 'HR'
-           ELSE 'Other'
-       END AS department_name
-FROM employees;
 
 
   
