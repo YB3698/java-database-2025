@@ -62,10 +62,13 @@ SELECT department_id, job_id, sum(salary) AS 부서직군별급여총액
 
 -- ROLLUP 그룹별 소계와 총계를 표시해주는 기능
 SELECT department_id, job_id, sum(salary) AS 부서직군별급여총액
-	 , count(*)
+     , count(*)
   FROM employees
  WHERE department_id BETWEEN 30 AND 90
-  GROUP BY ROLLUP (department_id, job_id);
+ GROUP BY ROLLUP (department_id, job_id);
+
+SELECT *
+FROM employees;
 
 -- PIVOT() 엑셀에 동일한 기능
 -- PIVOT 안쓰고 각 달별로 입사한 사원의 수를 표시. 12행
