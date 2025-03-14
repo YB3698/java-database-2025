@@ -58,7 +58,7 @@ CREATE TABLE new_board (
 );
 
 -- ALTER 기존 테이블을 수정할 때 사용
-ALTER  TABLE new_table ADD (address barchar2(200);
+ALTER TABLE new_table ADD (address varchar2(200));
 
 -- ALTER 기존 테이블에 전화번호 컬럼 추가
 -- 데이터가 이미 존재하는 테이블에 NOT NULL 컬럼은 추가 불가!!
@@ -73,6 +73,6 @@ DROP TABLE NEW_TABLE purge;
 
 -- TRUNCATE 테이블 초기화
 -- id(자동으로 증가하는) 1,2,3,4,5,
-TRUNCATE TABLE new_table;
+TRUNCATE TABLE NEW_TABLE;
 
 
