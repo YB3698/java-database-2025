@@ -24,36 +24,50 @@ SELECT *
     ON e.department_id  = d.department_id;
 
 -- 필요 컬럼만 명세
-SELECT e.employee_id, e.first_name || ' ' || e.last_name AS "full_name"
-	 , e.email, e.phone_number
-	 , e.hire_date, e.job_id
-	 , d.department_name
-  FROM employee e, departments d
+SELECT e.employee_id
+     , e.first_name || ' ' || e.last_name AS "full_name"
+     , e.email
+     , e.phone_number
+     , e.hire_date
+     , e.job_id
+     , d.department_name
+  FROM employees e, departments d
  WHERE e.department_id = d.department_id;
 
 -- 내부 조인(INNER JOIN)
-SELECT e.employee_id, e.first_name || ' ' || e.last_name AS "full_name"
-	 , e.email, e.phone_number
-	 , e.hire_date, e.job_id
+SELECT e.employee_id\
+     , e.first_name || ' ' || e.last_name AS "full_name"
+	 , e.email
+	 , e.phone_number
+	 , e.hire_date
+	 , e.job_id
 	 , d.department_name
-	 , l.city, l.STATE_PROVINCE, l.STREET_ADDRESS
-  FROM employee e, departments d, location l
+	 , l.city
+	 , l.STATE_PROVINCE
+	 , l.STREET_ADDRESS
+  FROM employees e, departments d, locations l
  WHERE e.department_id = d.department_id
-   AND l.location_id = d.location_id;
+   AND l.location_id = d.location_id
    AND d.department_id = 60;
 
 -- ANSI 표준은 오라클 방식보다 복잡.
-SELECT e.employee_id, e.first_name || ' ' || e.last_name AS "full_name"
-	 , e.email, e.phone_number
-	 , e.hire_date, e.job_id
+SELECT e.employee_id
+	 , e.first_name || ' ' || e.LAST_name AS "full_name"
+	 , e.email
+	 , e.phone_number
+	 , e.hire_date
+	 , e.job_id
+	 , d.department_id
 	 , d.department_name
-	 , l.city, l.STATE_PROVINCE, l.STREET_ADDRESS
-  FROM employee e, departments d, location l
- INNER JOIN departments d
-    ON e.department_id = d.department_id
- INNER JOIN locations l  
-    ON l.location_id = d.location_id
- WHERE d.department_id =60;
+	 , l.city
+	 , l.state_province
+	 , l.street_address
+FROM employees e
+INNER JOIN departments d
+ON e.department_id = d.department_id
+INNER JOIN locations l
+ON l.location_id = d.location_id
+WHERE d.department_id = 60;
 
 -- 외부조인
 -- 보콩 PK와 FK간의 일치하는 조건의 데이터를 찾는 것 - 내부조인
