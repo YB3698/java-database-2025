@@ -6,6 +6,9 @@
 
 -- no, name, birth 컬럼의 테이블 new_tabel을 생성하시오.
 -- create table new_table(); 이렇게 먼저 적어두고 안에 넣기 시작하기
+
+
+
 CREATE TABLE new_table(
 	NO 	  NUMBER(5,0)   PRIMARY KEY, -- PK는 지정하는게 기본(빼는 경우도 있지만 그냥 넣는다고 생각하기)-pk는 유니크의 NOT null(중복되지 않은 값)
 	NAME  varchar2(20)  NOT NULL, 
@@ -15,6 +18,9 @@ CREATE TABLE new_table(
 
 --삭제
 DROP TABLE new_table;
+
+
+
 
 -- 기본값을 설정하면서 테이블 생성
 CREATE TABLE new_table(
