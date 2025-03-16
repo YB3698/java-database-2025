@@ -85,21 +85,29 @@ SELECT *
     ON e.department_id = d.department_id
  WHERE e.DEPARTMENT_ID IS NULL;
 
--- outer join하니까 나옴
-SELECT *
-  FROM employees e
-  LEFT OUTER JOIN departments d  -- OUT 빼도 출력되지만 표준 문법이기 때문에 넣어주기
-    ON e.department_id = d.department_id
- WHERE e.DEPARTMENT_ID IS NULL;
-
--- departments 테이블엔 있는데 employees 테이블에 없는 데이터를 같이 출력해줘
+-- 기본 문법
 SELECT *
   FROM employees e
   LEFT OUTER JOIN departments d
+    ON e.department_id = d.department_id
+ WHERE e.DEPARTMENT_ID IS NULL;
+
+-- 오라클 문법
+SELECT *
+  FROM employees e, departments d
+ WHERE e.department_id = d.department_id(+)
+   AND e.department_id IS NULL;
+
+
+-- departments테이블에는 있는데 employees 테이블에 없는 데이터를 같이 출력해줘
+SELECT *
+  FROM employees e
+ RIGHT OUTER JOIN departments d
     ON e.department_id = d.department_id;
-	 
+
 -- Oracle 문법
--- (+) 만족하지 않는 조건도 더 나오게 한다는 뜻
+-- (+)만족하지 않는 조건도 더 나오게 한다는 뜻
+-- LEFT OUTER JOIN
 SELECT *
   FROM employees e, departments d
  WHERE e.department_id = d.department_id(+);
@@ -108,24 +116,17 @@ SELECT *
 SELECT *
   FROM employees e, departments d
  WHERE e.department_id(+) = d.department_id;
-
--- INNER JOIN은 INNER 생략 가능
--- OUTER JOIN에만 LEFT, RIGHT 존재하므로 OUTER 생략 가능
-
--- 셀프조인 : 자기자신을 두번 사용하는 조인
-SELECT *
-  FROM EMPLOYEES e1, employees e2
- WHERE e1.manager_id = e1.employee_id;
-
-
-
-SELECT department_id, job_id, sum(salary) AS 부서직군별급여총액
-	 , count(*)
-  FROM employees
-  
-  -- Oracle 문법
- WHERE department_id BETWEEN 30 AND 90
- GROUP BY ROLLUP(department_id, job_id);
-
-SELECT *
-  FROM departments;
+   
+-- INNER JOIN은 INNER를 생략가능
+-- OUTER JOIN에만 LEFT, RIGHT존재하므로 OUTER 생략가능
+    
+-- 셀프조인: 자기자신을 두번 사용하는 조인
+SELECT e1.employee_id
+	 , e1.first_name || ' ' || e1.LAST_NAME AS "full_emp_name"
+     , e1.job_id
+     , e1.manager_id
+     , e2.first_name || ' ' || e2.LAST_NAME AS "full_mng_name"
+     , e2.JOB_ID
+  FROM employees e1, employees e2
+ WHERE e1.manager_id = e2.employee_id(+)
+ ORDER BY e1.manager_id;
