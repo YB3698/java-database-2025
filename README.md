@@ -266,3 +266,56 @@ Java개발자 과정 Database 리포지토리
 
 ## 6일차
 - PL/SQL - ORACLE에서 파이썬처럼 코딩
+    - 오라클에서 프로그래밍을 하기 위한 언어
+    - 기본구조
+        - 선언부(DECLARE), 실행부(BEGIN ~ END), 예외처리부(EXCEPTION)구성
+    - Oracle 스키마 중 Packages, Procedures, Funtions이 PL/SQL로 작업하는 영역
+        - 저장된(Stored) PL/SQL
+    - 검색 화면에 출력하려면 명령어를 실행하고 PL/SQL을 수행해야 함
+        ```sql
+        SET SERVEROUTPUT ON; -- 화면 출력 기능 활성화
+        SHOW ERRORS; -- 오류 상세 내용 보기
+        ```
+- Stored Procedure와 Function을 만족시키기 위해 사용
+    - 저장 프로시저
+        - 한꺼번에 많은 일을 수행해야 할 때 (Transaction당 수행되는 로직득 묶어서)
+        - 예) 한번에 5개의 테이블에서 조회한 DML을 처리해야 한다
+            - 쿼리를 최소 10개를 수행해야 함
+            - 프로시저 한번만 수행할 수 있음
+        - 중대형 IT솔류션에서는 프로시저가 거의 필수
+    - 함수
+        - 스칼라값을 리턴할 때 -- SELECT절 서브쿼리와 기능이 동일
+        - 개발자에게 편의성을 제공하기 위해 만듦
+        ```sql
+        CREATE OR REPALCE FUNCTION 함수명
+        (
+            param1 datatype,
+            ...
+        )
+        RETURN datatype
+        IS | AS
+        PL/SQL Block
+        ```
+
+        - 실행 시 select문 등 DML문과 같이 사용
+        ```sql
+        SELECT *, 함수명(파라미터)
+          from 컬럼명;
+        ```
+    - 커서
+        - DB에서 테이블에 들어있는 데이터를 한줄씩 읽기 위해 필요함
+        ```sql
+        CURSOR 커서명 IS
+            select쿼리;
+        ```
+    - 트리거
+        - 특정 동작으로 다른 테이블에 자동으로 테이터가 변경되는 기능
+        - 한가지 동작에 대해서 연쇄적으로 다른 일 발생
+
+        ```sql
+        CREATE OR REPLACE TRIGGER 트리거명
+        BEFORE|AFTER INSERT|UPDATE|DELETE ON 테이블{뷰}이름
+        BEGIN
+            PL/SQL쿼리
+        END;
+        ```

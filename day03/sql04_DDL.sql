@@ -19,9 +19,6 @@ CREATE TABLE new_table(
 --삭제
 DROP TABLE new_table;
 
-
-
-
 -- 기본값을 설정하면서 테이블 생성
 CREATE TABLE new_table(
 	NO 	  NUMBER(5,0)   PRIMARY KEY, -- PK는 지정하는게 기본
@@ -32,9 +29,18 @@ CREATE TABLE new_table(
 );
 
 -- 테이블컬럼에 주석추가
-COMMENT ON COLUMN new_tabel.name IS '사원이름';
+COMMENT ON COLUMN new_table.name IS '사원이름';
 
-DROP TABLE DOUBLEKEYTBL;
+-- 테이블 주석 확인
+SELECT COLUMN_NAME, COMMENTS
+  FROM USER_COL_COMMENTS
+ WHERE TABLE_NAME = 'NEW_TABLE';
+
+-- 테이블 사용자 확인
+SELECT OWNER, TABLE_NAME
+FROM ALL_TABLES
+WHERE TABLE_NAME = 'NEW_TABLE';
+
 
 -- 기본키가 두개인 테이블 생성
 CREATE TABLE DOBLEKEYTBL (
@@ -44,6 +50,8 @@ CREATE TABLE DOBLEKEYTBL (
     JUMIN CHAR(14) UNIQUE,
     CONSTRAINT PK_DOUBLEKEYTBL PRIMARY KEY(ID, CODE)
 );
+
+DROP TABLE DOUBLEKEYTBL;
 
 -- new_member 부모테이블과 new_board 자식테이블간의 관계가 성립된 테이블 생성하시오.
 CREATE TABLE new_member(
