@@ -78,12 +78,19 @@ ALTER TABLE new_table ADD (address varchar2(200));
 -- 데이터가 이미 존재하는 테이블에 NOT NULL 컬럼은 추가 불가!!
 ALTER TABLE new_table ADD (tel varchar2(20) NOT NULL); -- 이러면 안돼요!!
 
+
 -- 컬럼 수정 varchar2(200) -> varchar2(100)
-ALTER TABLE new_table MODIFY (address varchar2(100);
+ALTER TABLE new_table MODIFY (address varchar2(100));
 
 -- DROP 테이블 삭제
 -- purge는 휴지통으로 보내는거
 DROP TABLE NEW_TABLE purge;
+
+
+
+
+
+
 
 -- TRUNCATE 테이블 초기화
 -- id(자동으로 증가하는) 1,2,3,4,5,
