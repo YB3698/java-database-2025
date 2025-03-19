@@ -30,6 +30,5 @@ UPDATE professor_new SET
 	   ID = 'SusanS';
 
 
-	   
-	   
+   
   
