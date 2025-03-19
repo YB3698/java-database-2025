@@ -14,9 +14,11 @@ CREATE TABLE new_emp(
 ALTER TABLE new_emp
 ADD CONSTRAINT uk_name UNIQUE(name);
 
+
+
 -- 제약 조건 변경
 ALTER TABLE new_emp
 MODIFY (loc_code CONSTRAINT ck_loc_code CHECK (loc_code > 0 AND loc_code < 7));
 
 -- 필요없는 제약조건 삭제
-ALTER TABLE new_emp DROP CONSTRAINT "SYS_C007139";
+ALTER TABLE new_emp DROP CONSTRAINT "SYS_C007177";

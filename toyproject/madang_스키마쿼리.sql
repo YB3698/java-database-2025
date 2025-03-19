@@ -11,7 +11,7 @@ CREATE TABLE Students (
 	std_id      NUMBER        PRIMARY KEY,
 	std_name    varchar2(100) NOT NULL,
 	std_mobile  varchar2(15)  NULL,
-	std_reguear number(4,0)  NOT null
+	std_regyear number(4,0)  NOT null
 );
 
 -- Students용 시퀀스 생성
