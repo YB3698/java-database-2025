@@ -105,6 +105,7 @@ Python GUI - Oracle연동 프로그램
             ```
             윈도우 + R -> sysdm.cpl검색 -> 고급에 환경변수에 시스템변수에 path 더블클릭 -> 새로만들기로 C:\Dev\Tool\instantclient_11_2 넣어주기 -> 재부팅
             ```
+            <img src = "../image/환경변수설정.png" width ="800">
         - 콘솔 테스트 결과
             <img src = "../image/db008.png" width="800">
 
