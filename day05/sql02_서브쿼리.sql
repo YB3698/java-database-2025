@@ -14,13 +14,13 @@ SELECT s.name, d.dname
    AND s.deptno1 = 103; -- 고정된 값
 
 -- Anthony Hopkins 학생과 같은 학과에 다니는 학생을 모두 조회
+   SELECT * FROM student;
 SELECT s.name, d.dname
   FROM student s , department d
  WHERE s.deptno1 = d.deptno
    AND s.deptno1 = (SELECT deptno1
    					  FROM student
    					  WHERE name = 'Anthony Hopkins'); -- 학생 이름 따라 학과번호가 변경 가능
-   					  
 -- WHERE절 서브쿼리에 =로 비교할 때 주의점
 -- WHERE절 서브쿼리는 다중행이 되면 안됨
 SELECT s.name, d.dname
@@ -36,6 +36,22 @@ SELECT *
 SELECT *
   FROM department;
 
+
+-- 내가 작성한 코드
+SELECT p.name AS "PROF_NAME"
+	 , TO_CHAR(p.hiredate, 'YYYY-MM-DD') AS "HIREDATE"
+	 , d.dname AS "DEPT_NAME"
+  FROM PROFESSOR p, DEPARTMENT d 
+ WHERE p.deptno = d.deptno
+   AND hiredate > (SELECT HIREDATE
+ 					 FROM PROFESSOR
+ 					WHERE NAME = 'Meg Ryan');
+ 
+SELECT HIREDATE
+  FROM PROFESSOR
+ WHERE NAME = 'Meg Ryan';
+ 
+-- 선생님이 작성한 코드
 SELECT p.name AS "PROF_NAME"
 	 , p.hiredate
 	 , d.dname AS "DEPT_NAME"
