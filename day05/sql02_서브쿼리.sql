@@ -77,9 +77,26 @@ SELECT hiredate -- 처음엔 *로 전부 조회하고 필요한 컬럼 넣어주
  
 -- 지역이 Pohang Main Office인 부서코드에 해당하는 직원들의 사번, 이름, 부서번호를 출력하시오
 -- 아래 서브쿼리에 넣어줄 값 
+ 
+SELECT *
+  FROM emp2;
+ 
+SELECT *
+  FROM dept2;
+
+SELECT *
+  FROM EMP2 e, DEPT2 d
+ WHERE e.deptno = d.dcode(+)
+
+SELECT dcode  
+ FROM DEPT2
+ WHERE area = 'Pohang Main Office';
+
 SELECT dcode
   FROM DEPT2
  WHERE area = 'Pohang Main Office';
+
+
 -- 완성된 서브쿼리
 SELECT empno, name, deptno
   FROM emp2
@@ -99,7 +116,7 @@ SELECT *
 
 SELECT *
   FROM emp2
- WHERE POSITION = 'Section head');
+ WHERE POSITION = 'Section head';
 
 SELECT *
   FROM EMP2
